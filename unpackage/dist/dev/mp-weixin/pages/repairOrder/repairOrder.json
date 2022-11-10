@@ -1,9 +1,0 @@
-{
-  "navigationBarTitleText": "施工反馈",
-  "enablePullDownRefresh": false,
-  "usingComponents": {
-    "take-photos": "/components/takePhotos/takePhotos",
-    "repair-image": "/components/repairImage/repairImage",
-    "repair-sign": "/components/repairSign/repairSign"
-  }
-}

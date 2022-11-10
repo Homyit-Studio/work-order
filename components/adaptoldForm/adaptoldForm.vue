@@ -35,49 +35,49 @@
 
 
 					<view v-if="newwork == 2">
-						<uni-forms-item label="户籍" name="dis_house" required>
+						<uni-forms-item label="户籍" name="dis_house">
 							<uni-easyinput v-model="confirmFormData.dis_house" placeholder="请输入户籍" />
 						</uni-forms-item>
-						<uni-forms-item label="身份类型" name="type" required>
+						<uni-forms-item label="身份类型" name="type">
 							<uni-data-select v-model="confirmFormData.type" :localdata="typeRange"
 								placeholder="请输入身份类型">
 							</uni-data-select>
 						</uni-forms-item>
-						<uni-forms-item label="身体状态" name="health_status" required>
+						<uni-forms-item label="身体状态" name="health_status">
 							<uni-data-select v-model="confirmFormData.health_status" :localdata="healthStatus"
 								placeholder="请输入老人身体状态">
 							</uni-data-select>
 						</uni-forms-item>
-						<uni-forms-item label="是否使用轮椅" name="wheelchair_or" required>
+						<uni-forms-item label="是否使用轮椅" name="wheelchair_or">
 							<uni-data-checkbox v-model="confirmFormData.wheelchair_or" :localdata="wheelchairStatus" />
 						</uni-forms-item>
 
 
-						<uni-forms-item label="家庭人口" name="family_number" required>
+						<uni-forms-item label="家庭人口" name="family_number">
 							<uni-easyinput v-model="confirmFormData.family_number" placeholder="请输入家庭人口数" />
 						</uni-forms-item>
-						<uni-forms-item label="家庭老人数" name="dis_number" required>
+						<uni-forms-item label="家庭老人数" name="dis_number">
 							<uni-easyinput v-model="confirmFormData.dis_number" placeholder="请输入家庭老人数" />
 						</uni-forms-item>
 
-						<uni-forms-item label="住宅情况" name="house_or" required>
+						<uni-forms-item label="住宅情况" name="house_or">
 							<uni-data-checkbox v-model="confirmFormData.house_or" :localdata="houseStatus" />
 						</uni-forms-item>
-						<uni-forms-item label="家庭联系人" name="fa_contact" required>
+						<uni-forms-item label="家庭联系人" name="fa_contact">
 							<uni-easyinput v-model="confirmFormData.fa_contact" placeholder="请输入家庭联系人" />
 						</uni-forms-item>
-						<uni-forms-item label="联系人电话" name="contact_tel" required>
+						<uni-forms-item label="联系人电话" name="contact_tel">
 							<uni-easyinput v-model="confirmFormData.contact_tel" placeholder="请输入联系人电话" />
 						</uni-forms-item>
 						<view v-for="item in addList" :key="item.name">
-							<uni-forms-item :label="item.c_name" :name="item.name" required>
+							<uni-forms-item :label="item.c_name" :name="item.name">
 								<uni-easyinput v-if="item.logical_len" type="textarea"
 									v-model="confirmFormData[item.name]" :placeholder="'请输入'+item.c_name" />
 								<uni-easyinput v-else v-model="confirmFormData[item.name]"
 									:placeholder="'请输入'+item.c_name" />
 							</uni-forms-item>
 						</view>
-						<uni-forms-item label="其他" name="detail" required>
+						<uni-forms-item label="其他" name="detail">
 							<uni-easyinput type="textarea" v-model="confirmFormData.detail" placeholder="请输入其他" />
 						</uni-forms-item>
 					</view>
@@ -252,228 +252,158 @@
 			};
 		},
 		mounted() {
-			this.confirmFormRules = {
-				town: {
-					rules: [{
-						required: true,
-						errorMessage: '乡镇不能为空'
-					}]
-				},
-				village: {
-					rules: [{
-						required: true,
-						errorMessage: '村不能为空'
-					}]
-				},
-				name: {
-					rules: [{
-						required: true,
-						errorMessage: '姓名不能为空'
-					}]
-				},
-				id_number: {
-					rules: [{
-						required: true,
-						errorMessage: '身份证号码不能为空'
-					}]
-				},
-				sex: {
-					rules: [{
-						required: true,
-						errorMessage: '性别不能为空'
-					}]
-				},
-				mobile: {
-					rules: [{
-						required: true,
-						errorMessage: '联系电话不能为空'
-					}]
-				},
-				address: {
-					rules: [{
-						required: true,
-						errorMessage: '地址不能为空'
-					}]
-				},
-				county: {
-					rules: [{
-						required: true,
-						errorMessage: '县区不能为空'
-					}]
-				},
-				dis_number: {
-					rules: [{
-							required: true,
-							errorMessage: '家庭老人数不能为空'
-						},
-						{
-							format: "number",
-							errorMessage: '家庭老人数只能为数字'
-						}
-					]
-				},
-				type: {
-					rules: [{
-						required: true,
-						errorMessage: '身份类别不能为空'
-					}, ]
-				},
-				family_number: {
-					rules: [{
-							required: true,
-							errorMessage: '家庭人口数不能为空'
-						},
-						{
-							format: "number",
-							errorMessage: '家庭人口数只能为数字'
-						}
-					]
-				},
-				dis_house: {
-					rules: [{
-						required: true,
-						errorMessage: '户籍不能为空'
-					}]
-				},
-				detail: {
-					rules: [{
-						required: true,
-						errorMessage: '其他不能为空'
-					}]
-				},
-				house_or: {
-					rules: [{
-						required: true,
-						errorMessage: '住宅情况不能为空'
-					}]
-				},
-				fa_contact: {
-					rules: [{
-						required: true,
-						errorMessage: '家庭联系人不能为空'
-					}]
-				},
-				contact_tel: {
-					rules: [{
-						required: true,
-						errorMessage: '联系人电话不能为空'
-					}]
-				},
-				wheelchair_or: {
-					rules: [{
-						required: true,
-						errorMessage: '是否有轮椅不能为空'
-					}]
-				},
-				health_status: {
-					rules: [{
-						required: true,
-						errorMessage: '身体状态不能为空'
-					}]
-				}
-			}
-			this.addList.map(item => {
+			// this.confirmFormRules = {
+			// 	town: {
+			// 		rules: [{
+			// 			required: true,
+			// 			errorMessage: '乡镇不能为空'
+			// 		}]
+			// 	},
+			// 	village: {
+			// 		rules: [{
+			// 			required: true,
+			// 			errorMessage: '村不能为空'
+			// 		}]
+			// 	},
+			// 	name: {
+			// 		rules: [{
+			// 			required: true,
+			// 			errorMessage: '姓名不能为空'
+			// 		}]
+			// 	},
+			// 	id_number: {
+			// 		rules: [{
+			// 			required: true,
+			// 			errorMessage: '身份证号码不能为空'
+			// 		}]
+			// 	},
+			// 	sex: {
+			// 		rules: [{
+			// 			required: true,
+			// 			errorMessage: '性别不能为空'
+			// 		}]
+			// 	},
+			// 	mobile: {
+			// 		rules: [{
+			// 			required: true,
+			// 			errorMessage: '联系电话不能为空'
+			// 		}]
+			// 	},
+			// 	address: {
+			// 		rules: [{
+			// 			required: true,
+			// 			errorMessage: '地址不能为空'
+			// 		}]
+			// 	},
+			// 	county: {
+			// 		rules: [{
+			// 			required: true,
+			// 			errorMessage: '县区不能为空'
+			// 		}]
+			// 	},
+			// 	dis_number: {
+			// 		rules: [{
+			// 				required: true,
+			// 				errorMessage: '家庭老人数不能为空'
+			// 			},
+			// 			{
+			// 				format: "number",
+			// 				errorMessage: '家庭老人数只能为数字'
+			// 			}
+			// 		]
+			// 	},
+			// 	type: {
+			// 		rules: [{
+			// 			required: true,
+			// 			errorMessage: '身份类别不能为空'
+			// 		}, ]
+			// 	},
+			// 	family_number: {
+			// 		rules: [{
+			// 				required: true,
+			// 				errorMessage: '家庭人口数不能为空'
+			// 			},
+			// 			{
+			// 				format: "number",
+			// 				errorMessage: '家庭人口数只能为数字'
+			// 			}
+			// 		]
+			// 	},
+			// 	dis_house: {
+			// 		rules: [{
+			// 			required: true,
+			// 			errorMessage: '户籍不能为空'
+			// 		}]
+			// 	},
+			// 	detail: {
+			// 		rules: [{
+			// 			required: true,
+			// 			errorMessage: '其他不能为空'
+			// 		}]
+			// 	},
+			// 	house_or: {
+			// 		rules: [{
+			// 			required: true,
+			// 			errorMessage: '住宅情况不能为空'
+			// 		}]
+			// 	},
+			// 	fa_contact: {
+			// 		rules: [{
+			// 			required: true,
+			// 			errorMessage: '家庭联系人不能为空'
+			// 		}]
+			// 	},
+			// 	contact_tel: {
+			// 		rules: [{
+			// 			required: true,
+			// 			errorMessage: '联系人电话不能为空'
+			// 		}]
+			// 	},
+			// 	wheelchair_or: {
+			// 		rules: [{
+			// 			required: true,
+			// 			errorMessage: '是否有轮椅不能为空'
+			// 		}]
+			// 	},
+			// 	health_status: {
+			// 		rules: [{
+			// 			required: true,
+			// 			errorMessage: '身体状态不能为空'
+			// 		}]
+			// 	}
+			// }
+			// this.addList.map(item => {
 
 
-				if (item.c_type == "int") {
-					this.confirmFormRules[item.name] = {
-						rules: [{
-							format: "number",
-							errorMessage: `${item.c_name}只能为数字`
-						}]
-					}
-					this.confirmFormRules[item.name].rules.push({
+			// 	if (item.c_type == "int") {
+			// 		this.confirmFormRules[item.name] = {
+			// 			rules: [{
+			// 				format: "number",
+			// 				errorMessage: `${item.c_name}只能为数字`
+			// 			}]
+			// 		}
+			// 		this.confirmFormRules[item.name].rules.push({
 
-						required: true,
-						errorMessage: `${item.c_name}不能为空`
+			// 			required: true,
+			// 			errorMessage: `${item.c_name}不能为空`
 
-					})
+			// 		})
 
-				} else {
-					this.confirmFormRules[item.name] = {
-						rules: [{
-							required: true,
-							errorMessage: `${item.c_name}不能为空`
-						}]
-					}
-				}
+			// 	} else {
+			// 		this.confirmFormRules[item.name] = {
+			// 			rules: [{
+			// 				required: true,
+			// 				errorMessage: `${item.c_name}不能为空`
+			// 			}]
+			// 		}
+			// 	}
 
 
-			})
+			// })
 		},
 		created() {
 			console.log("create")
 			if (this.newwork == 2) {
-				// this.confirmFormRules.dis_number = {
-				// 	rules: [{
-				// 			required: true,
-				// 			errorMessage: '家庭老人数不能为空'
-				// 		},
-				// 		{
-				// 			format: "number",
-				// 			errorMessage: '家庭老人数只能为数字'
-				// 		}
-				// 	]
-				// }
-				// this.confirmFormRules.type = {
-				// 	rules: [{
-				// 		required: true,
-				// 		errorMessage: '身份类别不能为空'
-				// 	}, ]
-				// }
-				// this.confirmFormRules.family_number = {
-				// 	rules: [{
-				// 			required: true,
-				// 			errorMessage: '家庭人口数不能为空'
-				// 		},
-				// 		{
-				// 			format: "number",
-				// 			errorMessage: '家庭人口数只能为数字'
-				// 		}
-				// 	]
-				// }
-				// this.confirmFormRules.dis_house = {
-				// 	rules: [{
-				// 		required: true,
-				// 		errorMessage: '户籍不能为空'
-				// 	}]
-				// }
-				// this.confirmFormRules.detail = {
-				// 	rules: [{
-				// 		required: true,
-				// 		errorMessage: '其他不能为空'
-				// 	}]
-				// }
-				// this.confirmFormRules.house_or = {
-				// 	rules: [{
-				// 		required: true,
-				// 		errorMessage: '住宅情况不能为空'
-				// 	}]
-				// }
-				// this.confirmFormRules.fa_contact = {
-				// 		rules: [{
-				// 			required: true,
-				// 			errorMessage: '家庭联系人不能为空'
-				// 		}]
-				// 	},
-				// 	this.confirmFormRules.contact_tel = {
-				// 		rules: [{
-				// 			required: true,
-				// 			errorMessage: '联系人电话不能为空'
-				// 		}]
-				// 	}
-				// this.confirmFormRules.wheelchair_or = {
-				// 	rules: [{
-				// 		required: true,
-				// 		errorMessage: '是否有轮椅不能为空'
-				// 	}]
-				// }
-				// this.confirmFormRules.health_status = {
-				// 	rules: [{
-				// 		required: true,
-				// 		errorMessage: '身体状态不能为空'
-				// 	}]
-				// }
 
 				this.getFieldAdd()
 				this.getWorkdetail()
@@ -489,35 +419,6 @@
 						})
 					} else if (res.data.code == 0) {
 						this.addList = res.data.add_list
-						// this.addList.map(item => {
-
-
-						// 	if (item.c_type == "int") {
-						// 		this.confirmFormRules[item.name] = {
-						// 			rules: [{
-						// 				format: "number",
-						// 				errorMessage: `${item.c_name}只能为数字`
-						// 			}]
-						// 		}
-						// 		this.confirmFormRules[item.name].rules.push({
-
-						// 			required: true,
-						// 			errorMessage: `${item.c_name}不能为空`
-
-						// 		})
-
-						// 	} else {
-						// 		this.confirmFormRules[item.name] = {
-						// 			rules: [{
-						// 				required: true,
-						// 				errorMessage: `${item.c_name}不能为空`
-						// 			}]
-						// 		}
-						// 	}
-
-
-						// })
-						// console.log(this.confirmFormData)
 					} else {
 						uni.showToast({
 							icon: "error",

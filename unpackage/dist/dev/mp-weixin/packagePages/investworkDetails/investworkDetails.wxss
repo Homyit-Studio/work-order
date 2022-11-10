@@ -76,6 +76,15 @@
 .invest-detail-page .table .table-title text {
   margin-left: 10rpx;
 }
+.invest-detail-page .search-button {
+  text-align: center;
+  width: 150rpx;
+  margin: 10px auto;
+  background-color: aqua;
+  border-radius: 5px;
+  padding: 8rpx 10rpx;
+  color: #323232;
+}
 .invest-detail-page .work-catalog {
   text-align: center;
   margin: 10rpx;

@@ -12,11 +12,10 @@
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
-    },
-    "minified": true
+    }
   },
   "compileType": "miniprogram",
-  "libVersion": "2.25.2",
+  "libVersion": "2.27.2",
   "appid": "wx72ccecc61516cbc4",
   "projectname": "uni-workorder",
   "condition": {

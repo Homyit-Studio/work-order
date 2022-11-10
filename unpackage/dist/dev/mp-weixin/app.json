@@ -13,7 +13,6 @@
       "root": "packagePages",
       "pages": [
         "repairOrder/repairOrder",
-        "mapAddress/mapAddress",
         "checkOrder/checkOrder",
         "investworkDetails/investworkDetails"
       ]

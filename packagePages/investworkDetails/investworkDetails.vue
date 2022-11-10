@@ -37,7 +37,8 @@
 						<uni-list-item title="残疾证号" :rightText="confirmtable.dis_id" />
 						<uni-list-item title="户籍" :rightText="confirmtable.dis_house" />
 						<view v-for="item in addList" :key="item.name">
-							<uni-list-item v-if="item.logical_len" :title="item.c_name" :note="confirmtable[item.name]" />
+							<uni-list-item v-if="item.logical_len" :title="item.c_name"
+								:note="confirmtable[item.name]" />
 							<uni-list-item v-else :title="item.c_name" :rightText="confirmtable[item.name]" />
 
 						</view>
@@ -65,14 +66,15 @@
 						<uni-list-item title="村" :rightText="confirmtable.village" />
 						<uni-list-item title="姓名" :rightText="confirmtable.name" />
 						<uni-list-item title="身份证号码" :rightText="confirmtable.id_number" />
-						<uni-list-item title="户籍" :rightText="confirmtable.dis_house" />
-						<uni-list-item title="性别" :note="confirmtable.sex" />
-						<uni-list-item title="身份类型" :note="confirmtable.type" />
-						<uni-list-item title="身体状态" :note="confirmtable.health_status" />
-						<uni-list-item title="是否使用轮椅" :note="confirmtable.wheelchair_or" />
-						<uni-list-item title="住宅情况" :note="confirmtable.house_or" />
+						<uni-list-item title="性别" :rightText="confirmtable.sex" />
 						<uni-list-item title="电话号码" :rightText="confirmtable.mobile" />
 						<uni-list-item title="家庭地址" :note="confirmtable.address" />
+						<uni-list-item title="户籍" :rightText="confirmtable.dis_house" />
+						<uni-list-item title="身份类型" :rightText="confirmtable.type" />
+						<uni-list-item title="身体状态" :rightText="confirmtable.health_status" />
+						<uni-list-item title="是否使用轮椅" :rightText="confirmtable.wheelchair_or" />
+						<uni-list-item title="住宅情况" :rightText="confirmtable.house_or" />
+						
 						<uni-list-item title="家庭老人数" :rightText="confirmtable.dis_number" />
 						<uni-list-item title="家庭人口数" :rightText="confirmtable.family_number" />
 						<uni-list-item title="家庭联系人" :rightText="confirmtable.fa_contact" />
@@ -90,10 +92,9 @@
 						<uni-icons type="shop-filled" color="#49e1ff" size="26"></uni-icons>
 						<text>推荐清单</text>
 					</view>
-					<!-- 	<uni-list>
-						<uni-list-item v-for="(item, index) in device_list" :key="index" :title="item.name"
-							:rightText="'数量: ' +item.number" />
-					</uni-list> -->
+					<view @click="viewurl" class="search-button" v-show="userMsg.is_type == 'director'">
+						<uni-icons type="wallet-filled"></uni-icons> <text>套餐详情 </text></text>
+					</view>
 					<view class="recom-list">
 						<view class="recom-item" v-for="(item, index) in device_list" :key="index">
 							<view class="title">{{item.name}}</view>
@@ -331,6 +332,24 @@
 			// }
 		},
 		methods: {
+			// 查看套餐详情
+			viewurl() {
+				uni.downloadFile({
+					url: 'https://gd.jxiot.top/static/excel/device-detail.xlsx', // 文件下载路径
+					success: (res) => {
+						if (res.statusCode === 200) {
+							//保存成功并打开文件
+							uni.openDocument({
+								filePath: res.tempFilePath,
+								success: (res) => console.log('成功打开文件')
+							})
+						}
+					},
+					fail(err) {
+						this.$u.toast('下载失败');
+					}
+				})
+			},
 			getFieldAdd() {
 				if (this.userMsg.is_type != "leader") {
 					uni.$http.get("/field/add/").then((res) => {
@@ -818,6 +837,17 @@
 				}
 			}
 		}
+
+		.search-button {
+			text-align: center;
+			width: 150rpx;
+			margin: 10px auto;
+			background-color: aqua;
+			border-radius: 5px;
+			padding: 8rpx 10rpx;
+			color: #323232;
+		}
+
 
 		.work-catalog {
 			text-align: center;

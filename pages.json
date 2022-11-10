@@ -79,12 +79,6 @@
 				}
 			
 			}, {
-				"path": "mapAddress/mapAddress",
-				"style": {
-					"navigationBarTitleText": "",
-					"enablePullDownRefresh": false
-				}
-			}, {
 			"path": "checkOrder/checkOrder",
 			"style": {
 				"navigationBarTitleText": "确认签名",
