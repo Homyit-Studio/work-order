@@ -1,0 +1,14 @@
+{
+  "navigationBarTitleText": "新增工单",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "uni-steps": "/uni_modules/uni-steps/components/uni-steps/uni-steps",
+    "uni-notice-bar": "/uni_modules/uni-notice-bar/components/uni-notice-bar/uni-notice-bar",
+    "confirm-order-form": "/components/confirmOrderForm/confirmOrderForm",
+    "adaptold-form": "/components/adaptoldForm/adaptoldForm",
+    "family-image": "/components/familyImage/familyImage",
+    "take-photos": "/components/takePhotos/takePhotos",
+    "recommend-list": "/components/recommendList/recommendList",
+    "sign-nature": "/components/signNature/signNature"
+  }
+}

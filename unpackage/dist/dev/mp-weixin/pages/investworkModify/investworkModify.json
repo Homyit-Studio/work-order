@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "修正工单",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "confirm-order-form": "/components/confirmOrderForm/confirmOrderForm",
+    "adaptold-form": "/components/adaptoldForm/adaptoldForm",
+    "take-photos": "/components/takePhotos/takePhotos",
+    "recommend-list": "/components/recommendList/recommendList",
+    "sign-nature": "/components/signNature/signNature",
+    "family-image": "/components/familyImage/familyImage"
+  }
+}

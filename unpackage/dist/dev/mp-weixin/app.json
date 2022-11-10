@@ -1,0 +1,58 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/home/home",
+    "pages/login/login",
+    "pages/addOrder/addOrder",
+    "pages/myWork/myWork",
+    "pages/investworkModify/investworkModify",
+    "pages/userOperate/userOperate"
+  ],
+  "subPackages": [
+    {
+      "root": "packagePages",
+      "pages": [
+        "repairOrder/repairOrder",
+        "mapAddress/mapAddress",
+        "checkOrder/checkOrder",
+        "investworkDetails/investworkDetails"
+      ]
+    }
+  ],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#007aff",
+    "backgroundColor": "#FFF"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#000",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "static/home2.png",
+        "selectedIconPath": "static/home1.png"
+      },
+      {
+        "pagePath": "pages/myWork/myWork",
+        "text": "我的",
+        "iconPath": "static/my1.png",
+        "selectedIconPath": "static/my2.png"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "requiredPrivateInfos": [
+    "getLocation",
+    "chooseLocation"
+  ],
+  "usingComponents": {}
+}
