@@ -24,9 +24,12 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+.index-page {
+  padding-bottom: var(--safe-area-inset-bottom);
+}
 .index-page .image {
   width: 750rpx;
-  height: 200px;
+  height: auto;
   overflow: hidden;
 }
 .index-page .image image {
@@ -34,9 +37,12 @@
   border-radius: 0 0 10px 10px;
 }
 .index-page .header-one {
+  letter-spacing: 3rpx;
+  font-weight: 600;
   font-size: 60rpx;
   text-align: center;
   margin: 20rpx 0;
+  color: #4177f6;
 }
 .index-page .card-options {
   display: flex;
@@ -44,31 +50,61 @@
   align-items: center;
 }
 .index-page .card-options .remind-text {
-  color: red;
+  color: #e78058;
+  font-weight: 300;
   text-align: center;
   margin-bottom: 40rpx;
+  letter-spacing: 2rpx;
 }
 .index-page .card-options .card-option {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   box-sizing: border-box;
-  width: 400rpx;
-  padding: 32rpx;
   margin: 20rpx;
   text-align: center;
-  font-size: 30rpx;
-  background-color: #007aff;
+  font-size: 40rpx;
   color: white;
-  box-shadow: 0px 0px 1px #666;
+  font-weight: 600;
+  letter-spacing: 2rpx;
+}
+.index-page .card-options .card-image-icon {
+  width: 120rpx;
+  height: 120rpx;
+}
+.index-page .card-options .card-image-text {
+  margin-left: 5px;
+  width: -webkit-fit-content;
+  width: fit-content;
+  width: 250rpx;
+  height: 80rpx;
+  border-radius: 50rpx;
+  background-color: #007aff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .index-page .contact {
-  margin-top: 120rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 .index-page .contact button {
   background-color: #fff;
   border: none;
   outline: none;
-  color: red;
 }
-.card-click {
-  box-shadow: 0px 0px 20px #666;
+.index-page .contact .card-image-text {
+  color: white;
+  margin-left: 5px;
+  width: -webkit-fit-content;
+  width: fit-content;
+  width: 250rpx;
+  height: 80rpx;
+  border-radius: 50rpx;
+  background-color: #007aff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 

@@ -1,4 +1,5 @@
 import App from './App'
+import './common.scss' // 由于微信小程序存在组件的样式隔离，因此这个地方旨在修改全局样式文件
 
 // #ifndef VUE3
 import Vue from 'vue'
@@ -26,11 +27,13 @@ import {
 	$http
 } from '@escook/request-miniprogram'
 uni.$http = $http
+const BASE_URL = 'https://test.jxiot.top/'
+// $http.baseUrl = 'https://gd.jxiot.top'
 
-$http.baseUrl = 'https://gd.jxiot.top'
+$http.baseUrl = BASE_URL
 
 $http.beforeRequest = function(options) {
-	if (options.url !== "https://gd.jxiot.top/login/") {
+	if (options.url !== `${BASE_URL}login/`) {
 		options.header["x-token"] = uni.getStorageSync('x-token')
 	}
 }

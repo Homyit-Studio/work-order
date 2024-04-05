@@ -1,9 +1,9 @@
 <template>
 	<view class="index-page">
 		<view class="image">
-			<image src="../../static/imagefeng.jpg" mode="widthFix"></image>
+			<image src="../../static/imagefeng.jpg" mode="widthFix" :draggable="false"></image>
 		</view>
-		<view class="header-one">
+		<view class="header-one" >
 			<text>工单助手</text>
 		</view>
 		<view class="card-options">
@@ -11,27 +11,24 @@
 				<text>请选择身份:</text>
 			</view>
 			<view class="card-option card-click" @click="navigatorTo('investor')">
-				<!-- <navigator hover-start-time="2" hover-class="card-click" url="../login/login?card=investor"
-					open-type="redirect">调查员</navigator> -->
-				<text>调查员</text>
+				<image src="../../static/icon1.png" mode="" class="card-image-icon"></image>
+				<text class="card-image-text">调查员</text>
 			</view>
 			<view class="card-option card-click" @click="navigatorTo('repair')">
-				<!-- <navigator hover-class="card-click" url="../login/login?card=repair" open-type="redirect">施工人员
-				</navigator> -->
-				<text>施工人员</text>
+				<image src="../../static/icon2.png" mode="" class="card-image-icon"></image>
+				<text class="card-image-text">施工人员</text>
 			</view>
 			<view class="card-option card-click" @click="navigatorTo('director')">
-				<!-- <navigator hover-class="card-click" url="../login/login?card=director" open-type="redirect">监理
-				</navigator> -->
-				<text>监理</text>
+				<image src="../../static/icon3.png" mode="" class="card-image-icon"></image>
+				<text class="card-image-text">监理</text>
 			</view>
 			<view class="card-option card-click" @click="navigatorTo('leader')">
-				<!-- <navigator hover-class="card-click" url="../login/login?card=leader" open-type="redirect">企业负责人
-				</navigator> -->
-				<text>企业负责人</text>
+				<image src="../../static/icon4.png" mode="" class="card-image-icon"></image>
+				<text class="card-image-text">企业负责人</text>
 			</view>
-			<view class="contact">
-				<button open-type="contact" class="contact-button" size="mini">售后服务</button>
+			<view class="contact card-option">
+				<image src="../../static/icon5.png" mode="" class="card-image-icon"></image>
+				<button open-type="contact"  class="card-image-text">售后服务</button>
 			</view>
 		</view>
 	</view>
@@ -54,22 +51,26 @@
 
 <style lang="scss">
 	.index-page {
+		// 适配iphoneX  2024-04-04
+		padding-bottom: var(--safe-area-inset-bottom);
 		.image {
 			width: 750rpx;
-			height: 200px;
+			height: auto;
 			overflow: hidden;
 
 			image {
 				width: 100%;
-				// height: 100%;
 				border-radius: 0 0 10px 10px;
 			}
 		}
 
 		.header-one {
+			letter-spacing: 3rpx;
+			font-weight: 600;
 			font-size: 60rpx;
 			text-align: center;
 			margin: 20rpx 0;
+			color: rgb(65, 119, 246)
 		}
 
 		.card-options {
@@ -78,38 +79,70 @@
 			align-items: center;
 
 			.remind-text {
-				color: red;
+				color: #e78058;
+				font-weight: 300;
 				text-align: center;
 				margin-bottom: 40rpx;
+				letter-spacing: 2rpx;
 			}
 
 			.card-option {
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
 				box-sizing: border-box;
-				width: 400rpx;
-				padding: 32rpx;
 				margin: 20rpx;
 				text-align: center;
-				font-size: 30rpx;
-				// background-image: linear-gradient(90deg,#EE9CA7 , #FFDDE1);
-				background-color: $work-color-main;
+				font-size: 40rpx;
 				color: white;
-				box-shadow: 0px 0px 1px #666;
+				font-weight: 600;
+				letter-spacing: 2rpx;
+			}
+			.card-image{
+				&-icon{
+					width: 120rpx;
+					height: 120rpx;
+				}
+				&-text{
+					margin-left: 5px;
+					width: fit-content;
+					width: 250rpx;
+					height: 80rpx;
+					border-radius: 50rpx;
+					background-color: #007aff;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+				}
 			}
 		}
 		
 		.contact{
-			margin-top: 120rpx;
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
 			button{
 				background-color: #fff;
 				border: none;
 				outline: none;
-				color: red;
+			}
+			.card-image-text{
+				color: white;
+				margin-left: 5px;
+				width: fit-content;
+				width: 250rpx;
+				height: 80rpx;
+				border-radius: 50rpx;
+				background-color: #007aff;
+				display: flex;
+				justify-content: center;
+				align-items: center;
 			}
 		}
 	}
 
-	.card-click {
-		box-shadow: 0px 0px 20px #666;
-	}
+	// .card-click {
+	// 	box-shadow: 0px 0px 20px #666;
+	// }
 	
 </style>

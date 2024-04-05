@@ -15,11 +15,25 @@
 					<uni-easyinput type="text" prefixIcon=".uniui-person-filled" v-model="loginFormData.username"
 						placeholder="请输入用户名或手机号" />
 				</uni-forms-item>
-				<uni-forms-item name="password">
+				<uni-forms-item name="password" class="form-password">
 					<uni-easyinput type="password" prefixIcon=".uniui-locked-filled" v-model="loginFormData.password"
 						placeholder="请输入密码" />
 				</uni-forms-item>
+				
+				
+				<!-- 新增记住密码功能 -->
+				<view class="remember" @click="handleCheckRatio">
+					<view class="remember-radio" >
+							<radio  color="#007aff" :checked="checked" />
+					</view>
+					
+					<view class="remember-password">
+						<text>记住密码</text>
+					</view>
+				</view>
+				
 			</uni-forms>
+			
 			<button type="primary" class="login-submit" @click="loginSubmit('loginForm')">确认</button>
 		</view>
 		<view>
@@ -68,10 +82,13 @@
 					}
 
 				},
+				/* 是否记住密码 */
+				checked:false, 
 			}
 		},
 		onLoad(options) {
 			this.loginFormData.is_type = options.card
+			// 自动存储，初始化表单
 		},
 		onReady() {
 			this.$refs.loginForm.setRules(this.loginRules)
@@ -144,6 +161,10 @@
 				}).catch(err => {
 					console.log('err', err);
 				})
+			},
+			handleCheckRatio(){
+				console.log(999)
+				this.checked = !this.checked
 			}
 		}
 	}
@@ -181,10 +202,31 @@
 				height: 70rpx;
 				line-height: 70rpx;
 				border-radius: 20rpx;
-				box-shadow: 0px 0xp 0px 10px #666;
+				box-shadow: 0px 0px 10px #666;
 				font-size: 14px;
 				background-color: $work-color-main;
 			}
 		}
 	}
+	.remember{
+		// margin-left: 200rpx;
+		position: relative;
+		top: -40rpx;
+		left: 10rpx;
+		width: 100%;
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		padding: 11rpx 15rpx;
+		&-radio{
+			radio{
+				transform: scale(0.7);
+			}
+		}
+		&-password{
+			font-size: 14px;
+			color: black;
+		}
+	}
+	
 </style>

@@ -35,7 +35,6 @@
 				"navigationBarTitleText": "登录",
 				"enablePullDownRefresh": false
 			}
-
 		}, {
 			"path": "pages/addOrder/addOrder",
 			"style": {

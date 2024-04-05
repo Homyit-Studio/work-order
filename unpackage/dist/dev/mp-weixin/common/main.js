@@ -1,9 +1,9 @@
 (global["webpackJsonp"] = global["webpackJsonp"] || []).push([["common/main"],{
 
 /***/ 0:
-/*!***************************************************************!*\
-  !*** /Users/bytedance/Desktop/project/uni-workorder1/main.js ***!
-  \***************************************************************/
+/*!***********************************************************!*\
+  !*** /Users/bytedance/Desktop/project/work-order/main.js ***!
+  \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -14,6 +14,7 @@ var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/inte
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
 __webpack_require__(/*! uni-pages */ 26);
 var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ 27));
+__webpack_require__(/*! ./common.scss */ 386);
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 25));
 var _requestMiniprogram = __webpack_require__(/*! @escook/request-miniprogram */ 33);
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
@@ -29,9 +30,12 @@ createApp(app).$mount();
 //npm install @escook/request-miniprogram
 
 uni.$http = _requestMiniprogram.$http;
-_requestMiniprogram.$http.baseUrl = 'https://gd.jxiot.top';
+var BASE_URL = 'https://test.jxiot.top/';
+// $http.baseUrl = 'https://gd.jxiot.top'
+
+_requestMiniprogram.$http.baseUrl = BASE_URL;
 _requestMiniprogram.$http.beforeRequest = function (options) {
-  if (options.url !== "https://gd.jxiot.top/login/") {
+  if (options.url !== "".concat(BASE_URL, "login/")) {
     options.header["x-token"] = uni.getStorageSync('x-token');
   }
 };
@@ -43,9 +47,9 @@ _requestMiniprogram.$http.beforeRequest = function (options) {
 /***/ }),
 
 /***/ 27:
-/*!***************************************************************!*\
-  !*** /Users/bytedance/Desktop/project/uni-workorder1/App.vue ***!
-  \***************************************************************/
+/*!***********************************************************!*\
+  !*** /Users/bytedance/Desktop/project/work-order/App.vue ***!
+  \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -83,9 +87,9 @@ component.options.__file = "App.vue"
 /***/ }),
 
 /***/ 28:
-/*!****************************************************************************************!*\
-  !*** /Users/bytedance/Desktop/project/uni-workorder1/App.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************/
+/*!************************************************************************************!*\
+  !*** /Users/bytedance/Desktop/project/work-order/App.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -99,9 +103,9 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
 /***/ 29:
-/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--13-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!/Users/bytedance/Desktop/project/uni-workorder1/App.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--13-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!/Users/bytedance/Desktop/project/work-order/App.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -131,9 +135,9 @@ exports.default = _default;
 /***/ }),
 
 /***/ 30:
-/*!************************************************************************************************!*\
-  !*** /Users/bytedance/Desktop/project/uni-workorder1/App.vue?vue&type=style&index=0&lang=css& ***!
-  \************************************************************************************************/
+/*!********************************************************************************************!*\
+  !*** /Users/bytedance/Desktop/project/work-order/App.vue?vue&type=style&index=0&lang=css& ***!
+  \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -147,9 +151,9 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
 /***/ 31:
-/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--6-oneOf-1-0!./node_modules/css-loader/dist/cjs.js??ref--6-oneOf-1-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-2!./node_modules/postcss-loader/src??ref--6-oneOf-1-3!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!/Users/bytedance/Desktop/project/uni-workorder1/App.vue?vue&type=style&index=0&lang=css& ***!
-  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--6-oneOf-1-0!./node_modules/css-loader/dist/cjs.js??ref--6-oneOf-1-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-2!./node_modules/postcss-loader/src??ref--6-oneOf-1-3!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!/Users/bytedance/Desktop/project/work-order/App.vue?vue&type=style&index=0&lang=css& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
