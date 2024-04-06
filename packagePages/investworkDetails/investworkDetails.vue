@@ -586,7 +586,7 @@
 				})
 			},
 			toModifyInvestor(status) {
-				console.log(status)
+				console.log(status,'status')
 				uni.navigateTo({
 					url: `/pages/investworkModify/investworkModify?status=${status}&&recordid=${this.record_id}&type=${this.record_type}`
 				})

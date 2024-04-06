@@ -132,6 +132,23 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /**
  * NumberBox 数字输入框
  * @description 带加减按钮的数字输入框
@@ -149,7 +166,7 @@ exports.default = void 0;
  */
 var _default = {
   name: "UniNumberBox",
-  emits: ['change', 'input', 'update:modelValue', 'blur', 'focus'],
+  emits: ["change", "input", "update:modelValue", "blur", "focus"],
   props: {
     value: {
       type: [Number, String],
@@ -173,11 +190,11 @@ var _default = {
     },
     background: {
       type: String,
-      default: '#f5f5f5'
+      default: "#f5f5f5"
     },
     color: {
       type: String,
-      default: '#333'
+      default: "#333"
     },
     disabled: {
       type: Boolean,
@@ -247,7 +264,7 @@ var _default = {
       return scale;
     },
     _onBlur: function _onBlur(event) {
-      this.$emit('blur', event);
+      this.$emit("blur", event);
       var value = event.detail.value;
       if (!value) {
         // this.inputValue = 0;
@@ -265,7 +282,7 @@ var _default = {
       this.$emit("input", +this.inputValue);
     },
     _onFocus: function _onFocus(event) {
-      this.$emit('focus', event);
+      this.$emit("focus", event);
     }
   }
 };

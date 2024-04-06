@@ -789,7 +789,7 @@ var _default = {
       });
     },
     toModifyInvestor: function toModifyInvestor(status) {
-      console.log(status);
+      console.log(status, 'status');
       uni.navigateTo({
         url: "/pages/investworkModify/investworkModify?status=".concat(status, "&&recordid=").concat(this.record_id, "&type=").concat(this.record_type)
       });
