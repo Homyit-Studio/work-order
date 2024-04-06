@@ -24,6 +24,14 @@
 			logout(){
 				this.$refs.logoutDialog.open()
 			},
+			clearStorage(){
+				const keyArray = ['x-token','user','fullName','hide','__DC_STAT_UUID']
+				keyArray.forEach((_name)=>{
+					uni.removeStorage({
+						key : _name
+					})
+				})
+			},
 			logoutConfirm(){
 				uni.showLoading({
 					title: "退出登录中..."
@@ -35,7 +43,7 @@
 							title : res.data.errmsg
 						})
 					}else if(res.data.code == 0){
-						uni.clearStorage()
+						this.clearStorage()
 						uni.showToast({
 							title: "退出登录成功"
 						})
