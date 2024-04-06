@@ -30,9 +30,8 @@ createApp(app).$mount();
 //npm install @escook/request-miniprogram
 
 uni.$http = _requestMiniprogram.$http;
-var BASE_URL = 'https://gd.jxiot.top';
-// const BASE_URL = 'https://test.jxiot.top/'
-
+// const BASE_URL = 'https://gd.jxiot.top'
+var BASE_URL = 'https://test.jxiot.top/';
 _requestMiniprogram.$http.baseUrl = BASE_URL;
 _requestMiniprogram.$http.beforeRequest = function (options) {
   if (options.url !== "".concat(BASE_URL, "login/")) {

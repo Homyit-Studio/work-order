@@ -163,10 +163,12 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {
 
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _toConsumableArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ 18));
 //
 //
 //
@@ -282,32 +284,10 @@ var _default = {
   data: function data() {
     return {
       addList: [],
-      typeRange: [{
-        value: '特困',
-        text: "特困"
-      }, {
-        value: "建档",
-        text: "建档"
-      }, {
-        value: '低保',
-        text: "低保"
-      }, {
-        value: '其他',
-        text: "其他"
-      }],
-      healthStatus: [{
-        value: '自理老人',
-        text: "自理老人"
-      }, {
-        value: '半失能老人',
-        text: "半失能老人"
-      }, {
-        value: '失能老人',
-        text: "失能老人"
-      }, {
-        value: '失智老人',
-        text: "失智老人"
-      }],
+      /* 身份类型 特困，建挡*/
+      typeRange: [],
+      /* 身体状态 自理老人*/
+      healthStatus: [],
       rankRange: [{
         value: '一级',
         text: "一级"
@@ -408,152 +388,21 @@ var _default = {
     };
   },
   mounted: function mounted() {
-    // this.confirmFormRules = {
-    // 	town: {
-    // 		rules: [{
-    // 			required: true,
-    // 			errorMessage: '乡镇不能为空'
-    // 		}]
-    // 	},
-    // 	village: {
-    // 		rules: [{
-    // 			required: true,
-    // 			errorMessage: '村不能为空'
-    // 		}]
-    // 	},
-    // 	name: {
-    // 		rules: [{
-    // 			required: true,
-    // 			errorMessage: '姓名不能为空'
-    // 		}]
-    // 	},
-    // 	id_number: {
-    // 		rules: [{
-    // 			required: true,
-    // 			errorMessage: '身份证号码不能为空'
-    // 		}]
-    // 	},
-    // 	sex: {
-    // 		rules: [{
-    // 			required: true,
-    // 			errorMessage: '性别不能为空'
-    // 		}]
-    // 	},
-    // 	mobile: {
-    // 		rules: [{
-    // 			required: true,
-    // 			errorMessage: '联系电话不能为空'
-    // 		}]
-    // 	},
-    // 	address: {
-    // 		rules: [{
-    // 			required: true,
-    // 			errorMessage: '地址不能为空'
-    // 		}]
-    // 	},
-    // 	county: {
-    // 		rules: [{
-    // 			required: true,
-    // 			errorMessage: '县区不能为空'
-    // 		}]
-    // 	},
-    // 	dis_number: {
-    // 		rules: [{
-    // 				required: true,
-    // 				errorMessage: '家庭老人数不能为空'
-    // 			},
-    // 			{
-    // 				format: "number",
-    // 				errorMessage: '家庭老人数只能为数字'
-    // 			}
-    // 		]
-    // 	},
-    // 	type: {
-    // 		rules: [{
-    // 			required: true,
-    // 			errorMessage: '身份类别不能为空'
-    // 		}, ]
-    // 	},
-    // 	family_number: {
-    // 		rules: [{
-    // 				required: true,
-    // 				errorMessage: '家庭人口数不能为空'
-    // 			},
-    // 			{
-    // 				format: "number",
-    // 				errorMessage: '家庭人口数只能为数字'
-    // 			}
-    // 		]
-    // 	},
-    // 	dis_house: {
-    // 		rules: [{
-    // 			required: true,
-    // 			errorMessage: '户籍不能为空'
-    // 		}]
-    // 	},
-    // 	detail: {
-    // 		rules: [{
-    // 			required: true,
-    // 			errorMessage: '其他不能为空'
-    // 		}]
-    // 	},
-    // 	house_or: {
-    // 		rules: [{
-    // 			required: true,
-    // 			errorMessage: '住宅情况不能为空'
-    // 		}]
-    // 	},
-    // 	fa_contact: {
-    // 		rules: [{
-    // 			required: true,
-    // 			errorMessage: '家庭联系人不能为空'
-    // 		}]
-    // 	},
-    // 	contact_tel: {
-    // 		rules: [{
-    // 			required: true,
-    // 			errorMessage: '联系人电话不能为空'
-    // 		}]
-    // 	},
-    // 	wheelchair_or: {
-    // 		rules: [{
-    // 			required: true,
-    // 			errorMessage: '是否有轮椅不能为空'
-    // 		}]
-    // 	},
-    // 	health_status: {
-    // 		rules: [{
-    // 			required: true,
-    // 			errorMessage: '身体状态不能为空'
-    // 		}]
-    // 	}
-    // }
-    // this.addList.map(item => {
-
-    // 	if (item.c_type == "int") {
-    // 		this.confirmFormRules[item.name] = {
-    // 			rules: [{
-    // 				format: "number",
-    // 				errorMessage: `${item.c_name}只能为数字`
-    // 			}]
-    // 		}
-    // 		this.confirmFormRules[item.name].rules.push({
-
-    // 			required: true,
-    // 			errorMessage: `${item.c_name}不能为空`
-
-    // 		})
-
-    // 	} else {
-    // 		this.confirmFormRules[item.name] = {
-    // 			rules: [{
-    // 				required: true,
-    // 				errorMessage: `${item.c_name}不能为空`
-    // 			}]
-    // 		}
-    // 	}
-
-    // })
+    var _this$typeRange, _this$healthStatus;
+    var healStatus = uni.getStorageSync('healStatus');
+    var idType = uni.getStorageSync('idType');
+    (_this$typeRange = this.typeRange).push.apply(_this$typeRange, (0, _toConsumableArray2.default)(idType.map(function (_item, index) {
+      return {
+        value: _item.name,
+        text: _item.name
+      };
+    })));
+    (_this$healthStatus = this.healthStatus).push.apply(_this$healthStatus, (0, _toConsumableArray2.default)(healStatus.map(function (_item) {
+      return {
+        value: _item.name,
+        text: _item.name
+      };
+    })));
   },
   created: function created() {
     console.log("create");

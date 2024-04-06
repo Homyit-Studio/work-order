@@ -226,6 +226,15 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default = {
   data: function data() {
     return {
@@ -245,13 +254,13 @@ var _default = {
         name: {
           rules: [{
             required: true,
-            errorMessage: '工单名称不能为空'
+            errorMessage: "工单名称不能为空"
           }]
         },
         record_type: {
           rules: [{
             required: true,
-            errorMessage: '表选择不能为空'
+            errorMessage: "表选择不能为空"
           }]
         }
       }
@@ -270,7 +279,7 @@ var _default = {
       this.$refs.baseForm.validate().then(function (res) {
         _this.addConfirm();
       }).catch(function (err) {
-        console.log('err', err);
+        console.log("err", err);
       });
     },
     change: function change(e) {
@@ -279,12 +288,12 @@ var _default = {
       var that = this;
       if (!e.show) {
         uni.getLocation({
-          type: 'gcj02',
+          type: "gcj02",
           geocode: true,
           success: function success(res) {
             uni.hideLoading();
-            console.log('当前位置的经度：' + res.longitude);
-            console.log('当前位置的纬度：' + res.latitude);
+            console.log("当前位置的经度：" + res.longitude);
+            console.log("当前位置的纬度：" + res.latitude);
             uni.chooseLocation({
               success: function success(resmsgt) {
                 //将数据传给后端
@@ -299,7 +308,7 @@ var _default = {
               },
               fail: function fail(errt) {
                 console.log(errt);
-                if (errt.errMsg != 'chooseLocation:fail cancel') {
+                if (errt.errMsg != "chooseLocation:fail cancel") {
                   uni.showToast({
                     icon: "warn",
                     title: "位置错误，提交初始位置"
@@ -318,11 +327,11 @@ var _default = {
     addConfirm: function addConfirm() {
       var _this2 = this;
       var that = this;
-      this.baseFormData.submitter = uni.getStorageSync('user').username;
+      this.baseFormData.submitter = uni.getStorageSync("user").username;
       uni.showLoading({
         title: "正在提交中..."
       });
-      uni.$http.post('/order/create/', this.baseFormData).then(function (res) {
+      uni.$http.post("/order/create/", this.baseFormData).then(function (res) {
         if (res.data.code == 400) {
           uni.showToast({
             icon: "error",
@@ -336,7 +345,7 @@ var _default = {
           var record_id = res.data.data.record_id;
           _this2.record_id = record_id;
           uni.getLocation({
-            type: 'gcj02',
+            type: "gcj02",
             geocode: true,
             success: function success(res) {
               console.log(res);
@@ -355,7 +364,7 @@ var _default = {
                 },
                 fail: function fail(err) {
                   console.log(err);
-                  if (err.errMsg != 'chooseLocation:fail cancel') {
+                  if (err.errMsg != "chooseLocation:fail cancel") {
                     uni.hideLoading();
                     that.$refs.positionPopup.open();
                   }
@@ -396,11 +405,11 @@ var _default = {
             title: res.data.errmsg
           });
         } else if (res.data.code == 0) {
-          if (_this3.baseFormData.record_type == '无障碍改造') {
+          if (_this3.baseFormData.record_type == "无障碍改造") {
             uni.navigateTo({
               url: "../addOrder/addOrder?recordid=".concat(record_id, "&type=1")
             });
-          } else if (_this3.baseFormData.record_type == '适老化改造') {
+          } else if (_this3.baseFormData.record_type == "适老化改造") {
             uni.navigateTo({
               url: "../addOrder/addOrder?recordid=".concat(record_id, "&type=2")
             });

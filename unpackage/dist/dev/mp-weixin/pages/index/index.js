@@ -178,12 +178,32 @@ exports.default = void 0;
 //
 //
 var _default = {
-  onLoad: function onLoad() {},
+  onLoad: function onLoad() {
+    var _this = this;
+    uni.$http.get("/get/info").then(function (_ref) {
+      var data = _ref.data;
+      var _data$data = data.data,
+        front_image = _data$data.front_image,
+        heal_status = _data$data.heal_status,
+        id_type = _data$data.id_type;
+      var images = _this.handleFrontImage(front_image);
+      uni.setStorageSync("images", images);
+      uni.setStorageSync("healStatus", heal_status);
+      uni.setStorageSync("idType", id_type);
+    });
+  },
   methods: {
     navigatorTo: function navigatorTo(card) {
       uni.navigateTo({
         url: "../login/login?card=".concat(card)
       });
+    },
+    handleFrontImage: function handleFrontImage(images) {
+      var map = {};
+      images.forEach(function (image) {
+        map[image.type] = image.file;
+      });
+      return map;
     }
   }
 };

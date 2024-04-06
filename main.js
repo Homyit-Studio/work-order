@@ -27,8 +27,8 @@ import {
 	$http
 } from '@escook/request-miniprogram'
 uni.$http = $http
-const BASE_URL = 'https://gd.jxiot.top'
-// const BASE_URL = 'https://test.jxiot.top/'
+// const BASE_URL = 'https://gd.jxiot.top'
+const BASE_URL = 'https://test.jxiot.top/'
 
 $http.baseUrl = BASE_URL
 
