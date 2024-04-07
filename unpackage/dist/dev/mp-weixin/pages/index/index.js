@@ -178,6 +178,11 @@ exports.default = void 0;
 //
 //
 var _default = {
+  data: function data() {
+    return {
+      images: {}
+    };
+  },
   onLoad: function onLoad() {
     var _this = this;
     uni.$http.get("/get/info").then(function (_ref) {
@@ -187,11 +192,13 @@ var _default = {
         heal_status = _data$data.heal_status,
         id_type = _data$data.id_type;
       var images = _this.handleFrontImage(front_image);
+      _this.images = images;
       uni.setStorageSync("images", images);
       uni.setStorageSync("healStatus", heal_status);
       uni.setStorageSync("idType", id_type);
     });
   },
+  mounted: function mounted() {},
   methods: {
     navigatorTo: function navigatorTo(card) {
       uni.navigateTo({
@@ -199,9 +206,10 @@ var _default = {
       });
     },
     handleFrontImage: function handleFrontImage(images) {
+      var prefixUrl = 'https://test.jxiot.top/media/';
       var map = {};
       images.forEach(function (image) {
-        map[image.type] = image.file;
+        map[image.type] = prefixUrl + image.file;
       });
       return map;
     }

@@ -1,7 +1,7 @@
 <template>
     <view class="index-page">
         <view class="image">
-            <image src="../../static/imagefeng.jpg" mode="widthFix" :draggable="false"></image>
+            <image :src="images['first_front']" mode="widthFix" :draggable="false"></image>
         </view>
         <view class="header-one">
             <text>工单助手</text>
@@ -11,23 +11,23 @@
                 <text>请选择身份:</text>
             </view>
             <view class="card-option card-click" @click="navigatorTo('investor')">
-                <image src="../../static/icon1.png" mode="" class="card-image-icon"></image>
+                <image :src="images['investor']" mode="" class="card-image-icon"></image>
                 <text class="card-image-text">调查员</text>
             </view>
             <view class="card-option card-click" @click="navigatorTo('repair')">
-                <image src="../../static/icon2.png" mode="" class="card-image-icon"></image>
+                <image :src="images['repair']" mode="" class="card-image-icon"></image>
                 <text class="card-image-text">施工人员</text>
             </view>
             <view class="card-option card-click" @click="navigatorTo('director')">
-                <image src="../../static/icon3.png" mode="" class="card-image-icon"></image>
+                <image :src="images['check']" mode="" class="card-image-icon"></image>
                 <text class="card-image-text">监理</text>
             </view>
             <view class="card-option card-click" @click="navigatorTo('leader')">
-                <image src="../../static/icon4.png" mode="" class="card-image-icon"></image>
+                <image :src="images['leader']" mode="" class="card-image-icon"></image>
                 <text class="card-image-text">企业负责人</text>
             </view>
             <view class="contact card-option">
-                <image src="../../static/icon5.png" mode="" class="card-image-icon"></image>
+                <image :src="images['sail']" mode="" class="card-image-icon"></image>
                 <button open-type="contact" class="card-image-text">售后服务</button>
             </view>
         </view>
@@ -36,15 +36,23 @@
 
 <script>
 export default {
+	data(){
+		return {
+			images:{}
+		}
+	},
     onLoad() {
         uni.$http.get("/get/info").then(({ data }) => {
             const { front_image, heal_status, id_type } = data.data
             const images = this.handleFrontImage(front_image)
+			this.images = images
             uni.setStorageSync("images", images)
             uni.setStorageSync("healStatus", heal_status)
             uni.setStorageSync("idType", id_type)
         })
     },
+	mounted(){
+	},
     methods: {
         navigatorTo(card) {
             uni.navigateTo({
@@ -52,9 +60,10 @@ export default {
             })
         },
         handleFrontImage(images) {
+			const prefixUrl = 'https://test.jxiot.top/media/'
             const map = {}
             images.forEach((image) => {
-                map[image.type] = image.file
+                map[image.type] = prefixUrl + image.file
             })
             return map
         },

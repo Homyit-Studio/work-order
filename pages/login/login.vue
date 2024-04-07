@@ -1,7 +1,7 @@
 <template>
 	<view class="login-page">
 		<view class="com-image">
-			<image src="../../static/company.jpg" mode="aspectFit"></image>
+			<image :src="logoUrl" mode="aspectFit"></image>
 		</view>
 		<view class="title-text">
 			<text> 账号登录 </text>
@@ -92,11 +92,13 @@
 					height: 0
 				},
 				users:[],
-				isFocus:false
+				isFocus:false,
+				logoUrl:'',
 			}
 		},
 		onLoad(options) {
-			
+			const images = uni.getStorageSync('images')
+			this.logoUrl = images['company']
 			try{
 				this.loginFormData.is_type = options.card
 				// 自动存储，初始化表单

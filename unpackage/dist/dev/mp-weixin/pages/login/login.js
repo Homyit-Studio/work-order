@@ -280,10 +280,13 @@ var _default = {
         height: 0
       },
       users: [],
-      isFocus: false
+      isFocus: false,
+      logoUrl: ''
     };
   },
   onLoad: function onLoad(options) {
+    var images = uni.getStorageSync('images');
+    this.logoUrl = images['company'];
     try {
       var _this$users;
       this.loginFormData.is_type = options.card;
