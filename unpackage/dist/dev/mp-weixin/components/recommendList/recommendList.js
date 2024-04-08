@@ -274,6 +274,18 @@ var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/r
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default = {
   name: "recommendList",
   props: {
@@ -307,7 +319,8 @@ var _default = {
       allcost: 0.0,
       saveDevice: [],
       delitem: {},
-      recomUnit: ""
+      recomUnit: "",
+      isShowDialog: false // 对dialog进行销毁，以便重置数据
     };
   },
   //asnyc原理还需要理解透彻
@@ -519,7 +532,6 @@ var _default = {
       } else {
         this.recomDetail = e.cost;
         this.deviceChoose.cost = e.cost;
-        console.log(e);
         this.recomUnit = e.unit_type;
       }
     },
@@ -638,6 +650,46 @@ var _default = {
         title: "\u63D0\u4EA4\u6210\u529F"
       });
       this.recommendConfirm();
+    },
+    modifyDevice: function modifyDevice(item, index) {
+      this.isShowDialog = true;
+      this.delitem = item;
+      this.delindex = index;
+      this.$refs.modifyPopup.open();
+    },
+    handleModifyCondfirm: function handleModifyCondfirm(inputValue) {
+      var _this6 = this;
+      var _this$delitem = this.delitem,
+        record_id = _this$delitem.record_id,
+        device_id = _this$delitem.device_id;
+      uni.$http.post('modify/number/', {
+        number: inputValue,
+        record_id: record_id,
+        device_id: device_id
+      }).then(function (_ref) {
+        var data = _ref.data;
+        // 调用成功
+        if (data.code === 0) {
+          // 修改数量以及价格
+          uni.showToast({
+            title: '修改成功',
+            icon: 'success'
+          });
+          _this6.finishReList[_this6.delindex].number = Number(inputValue);
+          // 修改总数量
+          _this6.allcost = _this6.finishReList.reduce(function (acc, cur) {
+            return acc += cur.number * cur.cost;
+          }, 0);
+          // 初始化输入框内容
+          _this6.isShowDialog = false;
+        }
+      }).catch(function (err) {
+        uni.showToast({
+          title: '错误',
+          icon: 'fail'
+        });
+        console.log(err);
+      });
     }
   }
 };

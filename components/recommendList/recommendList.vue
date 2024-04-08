@@ -6,7 +6,8 @@
 					<uni-icons type="search" size="16"></uni-icons>
 					<text>查找</text>
 				</view>
-				<view @click="viewurl" class="search-button"><uni-icons type="wallet-filled"></uni-icons> <text>套餐详情 </text></text></view>
+				<view @click="viewurl" class="search-button"><uni-icons type="wallet-filled"></uni-icons> <text>套餐详情
+					</text></text></view>
 			</view>
 			<view>
 				<uni-data-picker ref="picker" placeholder="请选择设备类型" popup-title="请选择设备" :step-searh="false"
@@ -37,12 +38,17 @@
 				</uni-list-item>
 			</uni-list> -->
 			<view class="recom-list">
-				<view class="recom-item" v-for="(item, index) in finishReList" :key="index"
-					@click="dellocalDevice(index, item)">
+				<view class="recom-item" v-for="(item, index) in finishReList" :key="index">
 					<view class="title">{{deviceidMap[item.device_id]}}</view>
 					<view class="cost">单价: {{item.cost}}</view>
 					<view class="number">数量: {{item.number}}
-						<uni-icons type="right" size="14" color="#9c9c9c"></uni-icons>
+						<view class="recom-icon-delete" @click="dellocalDevice(index, item)">
+							删除
+						</view>
+						<view class="recom-icon-modify" @click="modifyDevice(item,index)">
+							修改
+						</view>
+						<!-- <uni-icons type="right" size="14" color="#9c9c9c"></uni-icons> -->
 					</view>
 				</view>
 			</view>
@@ -93,6 +99,12 @@
 				</view>
 			</uni-popup>
 		</view>
+		<view>
+			<uni-popup ref="modifyPopup" background-color="#fff" type="dialog">
+				<uni-popup-dialog v-if="isShowDialog" type="info" cancelText="取消" confirmText="修改" title="修改"
+					 mode="input" placeholder="请输入修改的数量"  @confirm="handleModifyCondfirm"></uni-popup-dialog>
+			</uni-popup>
+		</view>
 	</view>
 </template>
 
@@ -130,7 +142,8 @@
 				allcost: 0.0,
 				saveDevice: [],
 				delitem: {},
-				recomUnit: ""
+				recomUnit: "",
+				isShowDialog:false // 对dialog进行销毁，以便重置数据
 			}
 		},
 		//asnyc原理还需要理解透彻
@@ -339,7 +352,6 @@
 				} else {
 					this.recomDetail = e.cost
 					this.deviceChoose.cost = e.cost
-					console.log(e)
 					this.recomUnit = e.unit_type
 				}
 			},
@@ -435,7 +447,46 @@
 					title: `提交成功`
 				})
 				this.recommendConfirm()
+			},
+			modifyDevice(item, index) {
+				this.isShowDialog = true
+				this.delitem = item
+				this.delindex = index
+				this.$refs.modifyPopup.open()
+			},
+			handleModifyCondfirm(inputValue){
+				const {record_id,device_id} = this.delitem
+				uni.$http.post('modify/number/',{
+					number:inputValue,
+					record_id,
+					device_id,
+				}).then(({data})=>{
+					// 调用成功
+					if(data.code===0){
+						// 修改数量以及价格
+						uni.showToast({
+							title:'修改成功',
+							icon:'success'
+						})
+						
+						this.finishReList[this.delindex].number = Number(inputValue);
+						// 修改总数量
+						this.allcost = this.finishReList.reduce((acc,cur)=>{
+							return acc+=cur.number * cur.cost
+						},0)
+						// 初始化输入框内容
+						this.isShowDialog = false
+						
+					}
+				}).catch((err)=>{
+					uni.showToast({
+						title:'错误',
+						icon:'fail'
+					})
+					console.log(err);
+				})
 			}
+			
 		}
 	}
 </script>
@@ -451,18 +502,52 @@
 			}
 		}
 
+		.recom-icon {
+			&-delete {
+				margin: 0 5px;
+				background-color: #ecf5ff;
+				display: inline-block;
+				height: 20px;
+				padding: 0 5px;
+				line-height: 20px;
+				font-size: 12px;
+				color: #409eff;
+				border: 1px solid #d9ecff;
+				border-radius: 4px;
+				box-sizing: border-box;
+				white-space: nowrap;
+			}
+
+			&-modify {
+				margin: 0 5px;
+				display: inline-block;
+				height: 20px;
+				padding: 0 5px;
+				line-height: 20px;
+				font-size: 12px;
+				color: #409eff;
+				border: 1px solid #d9ecff;
+				border-radius: 4px;
+				box-sizing: border-box;
+				white-space: nowrap;
+				background-color: #fff;
+				border-color: #f5dab1;
+				color: #e6a23c;
+			}
+		}
+
 		.recom-list {
 
 			.recom-item {
 				display: flex;
 				justify-content: space-between;
 				border-bottom: 1px solid gainsboro;
-				padding: 10px 20px;
+				padding: 10px;
 
 				.title {
 					font-size: 14px;
 					color: #323232;
-					width: 170rpx;
+					width: fit-content;
 				}
 
 				.cost,
@@ -512,7 +597,8 @@
 				}
 			}
 		}
-		.top-button{
+
+		.top-button {
 			display: flex;
 			justify-content: space-between;
 		}

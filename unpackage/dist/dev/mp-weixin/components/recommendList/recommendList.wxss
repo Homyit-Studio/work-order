@@ -31,16 +31,47 @@
 .recommend-list-page .notes text {
   margin-right: 10rpx;
 }
+.recommend-list-page .recom-icon-delete {
+  margin: 0 5px;
+  background-color: #ecf5ff;
+  display: inline-block;
+  height: 20px;
+  padding: 0 5px;
+  line-height: 20px;
+  font-size: 12px;
+  color: #409eff;
+  border: 1px solid #d9ecff;
+  border-radius: 4px;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+.recommend-list-page .recom-icon-modify {
+  margin: 0 5px;
+  display: inline-block;
+  height: 20px;
+  padding: 0 5px;
+  line-height: 20px;
+  font-size: 12px;
+  color: #409eff;
+  border: 1px solid #d9ecff;
+  border-radius: 4px;
+  box-sizing: border-box;
+  white-space: nowrap;
+  background-color: #fff;
+  border-color: #f5dab1;
+  color: #e6a23c;
+}
 .recommend-list-page .recom-list .recom-item {
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid gainsboro;
-  padding: 10px 20px;
+  padding: 10px;
 }
 .recommend-list-page .recom-list .recom-item .title {
   font-size: 14px;
   color: #323232;
-  width: 170rpx;
+  width: -webkit-fit-content;
+  width: fit-content;
 }
 .recommend-list-page .recom-list .recom-item .cost,
 .recommend-list-page .recom-list .recom-item .number {

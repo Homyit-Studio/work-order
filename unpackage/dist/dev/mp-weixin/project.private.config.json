@@ -9,6 +9,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/investworkModify/investworkModify",
+          "pathName": "pages/investworkModify/investworkModify",
+          "query": "status=4&recordid=1&type=2",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "packagePages/investworkDetails/investworkDetails",
           "pathName": "packagePages/investworkDetails/investworkDetails",
           "query": "id=24&type=2&status=%E6%9C%AA%E5%AE%A1%E6%A0%B8",
