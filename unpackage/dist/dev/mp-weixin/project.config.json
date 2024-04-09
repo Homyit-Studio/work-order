@@ -18,7 +18,7 @@
     }
   },
   "compileType": "miniprogram",
-  "libVersion": "1.2",
+  "libVersion": "latest",
   "appid": "wx72ccecc61516cbc4",
   "projectname": "uni-workorder",
   "condition": {

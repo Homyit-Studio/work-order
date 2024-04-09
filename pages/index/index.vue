@@ -90,7 +90,7 @@ export default {
     .header-one {
         letter-spacing: 3rpx;
         font-weight: 600;
-        font-size: 60rpx;
+        font-size: 50rpx;
         text-align: center;
         margin: 20rpx 0;
         color: rgb(65, 119, 246);
@@ -114,23 +114,23 @@ export default {
             justify-content: flex-start;
             align-items: center;
             box-sizing: border-box;
-            margin: 20rpx;
+            margin: 10rpx;
             text-align: center;
-            font-size: 40rpx;
+            font-size: 30rpx;
             color: white;
             font-weight: 600;
             letter-spacing: 2rpx;
         }
         .card-image {
             &-icon {
-                width: 120rpx;
-                height: 120rpx;
+                width: 100rpx;
+                height: 100rpx;
             }
             &-text {
                 margin-left: 5px;
                 width: fit-content;
-                width: 250rpx;
-                height: 80rpx;
+                width: 180rpx;
+                height: 60rpx;
                 border-radius: 50rpx;
                 background-color: #007aff;
                 display: flex;
@@ -145,16 +145,19 @@ export default {
         justify-content: flex-start;
         align-items: center;
         button {
+            font-size: 30rpx;
             background-color: #fff;
             border: none;
             outline: none;
+            padding: 0;
         }
         .card-image-text {
+            line-height: 60rpx;
             color: white;
             margin-left: 5px;
             width: fit-content;
-            width: 250rpx;
-            height: 80rpx;
+            width: 180rpx;
+            height: 60rpx;
             border-radius: 50rpx;
             background-color: #007aff;
             display: flex;

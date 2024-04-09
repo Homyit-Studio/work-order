@@ -86,7 +86,7 @@
 .index-page .header-one {
   letter-spacing: 3rpx;
   font-weight: 600;
-  font-size: 60rpx;
+  font-size: 50rpx;
   text-align: center;
   margin: 20rpx 0;
   color: #4177f6;
@@ -108,23 +108,23 @@
   justify-content: flex-start;
   align-items: center;
   box-sizing: border-box;
-  margin: 20rpx;
+  margin: 10rpx;
   text-align: center;
-  font-size: 40rpx;
+  font-size: 30rpx;
   color: white;
   font-weight: 600;
   letter-spacing: 2rpx;
 }
 .index-page .card-options .card-image-icon {
-  width: 120rpx;
-  height: 120rpx;
+  width: 100rpx;
+  height: 100rpx;
 }
 .index-page .card-options .card-image-text {
   margin-left: 5px;
   width: -webkit-fit-content;
   width: fit-content;
-  width: 250rpx;
-  height: 80rpx;
+  width: 180rpx;
+  height: 60rpx;
   border-radius: 50rpx;
   background-color: #007aff;
   display: flex;
@@ -137,17 +137,20 @@
   align-items: center;
 }
 .index-page .contact button {
+  font-size: 30rpx;
   background-color: #fff;
   border: none;
   outline: none;
+  padding: 0;
 }
 .index-page .contact .card-image-text {
+  line-height: 60rpx;
   color: white;
   margin-left: 5px;
   width: -webkit-fit-content;
   width: fit-content;
-  width: 250rpx;
-  height: 80rpx;
+  width: 180rpx;
+  height: 60rpx;
   border-radius: 50rpx;
   background-color: #007aff;
   display: flex;
