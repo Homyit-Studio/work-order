@@ -571,7 +571,8 @@ var _default = {
       position: {},
       record_type: null,
       family_image_list: null,
-      workStatus: ""
+      workStatus: "",
+      BASE_URL: _main.BASE_URL
     };
   },
   onLoad: function onLoad(options) {
@@ -1014,7 +1015,7 @@ var _default = {
     preview: function preview(imagelist, index) {
       var array = [];
       imagelist.forEach(function (item) {
-        var url = "".concat(_main.BASE_URL, "/static/download/") + item.name;
+        var url = "".concat(_main.BASE_URL, "/media/") + item.name;
         array.push(url);
       });
       uni.previewImage({

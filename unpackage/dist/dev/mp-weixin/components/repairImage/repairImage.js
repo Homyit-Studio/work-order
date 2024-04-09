@@ -320,7 +320,8 @@ var _default = {
       delimageId: null,
       delImageItem: null,
       maxImageCount: 9,
-      histroyImage: []
+      histroyImage: [],
+      BASE_URL: _main.BASE_URL
     };
   },
   created: function created() {
@@ -421,7 +422,7 @@ var _default = {
     previewUpload: function previewUpload(imagelist, index) {
       var array = [];
       imagelist.forEach(function (item) {
-        var url = "".concat(_main.BASE_URL, "/static/download/") + item.name;
+        var url = "".concat(_main.BASE_URL, "/media/") + item.name;
         array.push(url);
       });
       uni.previewImage({

@@ -320,7 +320,8 @@ var _default = {
       delimageId: null,
       delImageItem: null,
       maxImageCount: 9,
-      histroyImage: []
+      histroyImage: [],
+      BASE_URL: _main.BASE_URL
     };
   },
   created: function created() {
@@ -421,7 +422,7 @@ var _default = {
     previewUpload: function previewUpload(imagelist, index) {
       var array = [];
       imagelist.forEach(function (item) {
-        var url = "".concat(_main.BASE_URL, "/static/download/") + item.name;
+        var url = "".concat(_main.BASE_URL, "/media/") + item.name;
         array.push(url);
       });
       uni.previewImage({
@@ -481,7 +482,7 @@ var _default = {
       console.log(this.imgList);
       this.imgList.forEach(function (item) {
         uni.uploadFile({
-          url: "https://gd.jxiot.top/image/upload/",
+          url: "".concat(_main.BASE_URL, "/image/upload/"),
           filePath: item,
           name: "image",
           //文件对应的 key , 开发者在服务器端通过这个 key 可以获取到文件二进制内容

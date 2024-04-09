@@ -9,7 +9,7 @@
                     <image
                         class="image"
                         style="width: 180rpx; height: 200rpx; box-shadow: 0px 0px 2px #979797"
-                        :src="`${BASE_URL}/static/download/` + item.name"
+                        :src="`${BASE_URL}/media/` + item.name"
                         mode="aspectFill"
                         @click="previewUpload(histroyImage, index)"
                     ></image>
@@ -105,6 +105,7 @@ export default {
             delImageItem: null,
             maxImageCount: 9,
             histroyImage: [],
+            BASE_URL: BASE_URL,
         }
     },
     created() {
@@ -207,7 +208,7 @@ export default {
         previewUpload(imagelist, index) {
             let array = []
             imagelist.forEach((item) => {
-                let url = `${BASE_URL}/static/download/` + item.name
+                let url = `${BASE_URL}/media/` + item.name
                 array.push(url)
             })
             uni.previewImage({
@@ -252,7 +253,7 @@ export default {
             console.log(this.imgList)
             this.imgList.forEach((item) => {
                 uni.uploadFile({
-                    url: "https://gd.jxiot.top/image/upload/",
+                    url: `${BASE_URL}/image/upload/`,
                     filePath: item,
                     name: "image", //文件对应的 key , 开发者在服务器端通过这个 key 可以获取到文件二进制内容
                     header: {

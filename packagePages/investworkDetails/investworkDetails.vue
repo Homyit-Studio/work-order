@@ -119,7 +119,7 @@
 						<view class="img-box">
 							<view v-for="(item,index) in family_image_list" :key="item.name">
 								<image @click="preview(family_image_list,index)"
-									:src="`${BASE_URL}/static/download/` + item.name"
+									:src="`${BASE_URL}/media/` + item.name"
 									style="width: 180rpx;height: 210rpx;" mode="aspectFill"></image>
 							</view>
 						</view>
@@ -133,7 +133,7 @@
 					<view class="img-box">
 						<view v-for="(item,index) in inv_image_list" :key="item.name">
 							<image @click="preview(inv_image_list,index)"
-								:src="`${BASE_URL}/static/download/` + item.name"
+								:src="`${BASE_URL}/media/` + item.name"
 								style="width: 180rpx;height: 210rpx;" mode="aspectFill"></image>
 						</view>
 					</view>
@@ -146,7 +146,7 @@
 					<view class="img-box">
 						<view v-for="(item, index) in sign_image_list" :key="item.name" style="height: 210rpx;">
 							<image @click="preview(sign_image_list, index)"
-								:src="`${BASE_URL}/static/download/` + item.name"
+								:src="`${BASE_URL}/media/` + item.name"
 								style="width: 210rpx;height: 310rpx;transform: rotate(270deg);margin-top: -60rpx;"
 								mode="aspectFill"></image>
 						</view>
@@ -163,7 +163,7 @@
 					<view class="img-box">
 						<view v-for="item in app_image_list" :key="item.name" style="height: 210rpx;">
 							<image @click="preview(item.name)"
-								:src="'${BASE_URL}/static/download/' + item.name"
+								:src="'${BASE_URL}/media/' + item.name"
 								style="width: 210rpx;height: 310rpx;transform: rotate(270deg);margin-top: -60rpx;"
 								mode="aspectFill"></image>
 						</view>
@@ -194,7 +194,7 @@
 				<view class="img-box">
 					<view v-for="(item,index) in rep_image_list" :key="item.name">
 						<image @click="preview(rep_image_list, index)"
-							:src="`${BASE_URL}/static/download/` + item.name"
+							:src="`${BASE_URL}/media/` + item.name"
 							style="width: 180rpx;height: 210rpx;" mode="aspectFill"></image>
 					</view>
 				</view>
@@ -207,7 +207,7 @@
 				<view class="img-box">
 					<view v-for="(item, index) in rep_sign_images" :key="item.name" style="height: 210rpx;">
 						<image @click="preview(rep_sign_images, index)"
-							:src="`${BASE_URL}/static/download/` + item.name"
+							:src="`${BASE_URL}/media/` + item.name"
 							style="width: 210rpx;height: 310rpx;transform: rotate(270deg);margin-top: -60rpx;"
 							mode="aspectFill"></image>
 					</view>
@@ -317,7 +317,8 @@ import { BASE_URL } from '../../main'
 				position: {},
 				record_type: null,
 				family_image_list: null,
-				workStatus: ""
+				workStatus: "",
+				BASE_URL:BASE_URL
 			}
 		},
 		onLoad(options) {
@@ -762,7 +763,7 @@ import { BASE_URL } from '../../main'
 			preview(imagelist, index) {
 				let array = [];
 				imagelist.forEach((item) => {
-					let url = `${BASE_URL}/static/download/` + item.name
+					let url = `${BASE_URL}/media/` + item.name
 					array.push(url);
 				})
 				uni.previewImage({

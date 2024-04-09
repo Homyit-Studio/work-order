@@ -17,7 +17,7 @@ export default {
     methods: {
         down() {
             uni.downloadFile({
-                url: "https://gd.jxiot.top/static/excel/device-detail.xlsx", // 文件下载路径
+                url: `${BASE_URL}/static/excel/device-detail.xlsx`, // 文件下载路径
                 success: (res) => {
                     if (res.statusCode === 200) {
                         //保存成功并打开文件
