@@ -104,10 +104,10 @@ try {
       return Promise.all(/*! import() | components/takePhotos/takePhotos */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/takePhotos/takePhotos")]).then(__webpack_require__.bind(null, /*! @/components/takePhotos/takePhotos.vue */ 220))
     },
     repairImage: function () {
-      return __webpack_require__.e(/*! import() | components/repairImage/repairImage */ "components/repairImage/repairImage").then(__webpack_require__.bind(null, /*! @/components/repairImage/repairImage.vue */ 259))
+      return Promise.all(/*! import() | components/repairImage/repairImage */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/repairImage/repairImage")]).then(__webpack_require__.bind(null, /*! @/components/repairImage/repairImage.vue */ 259))
     },
     repairSign: function () {
-      return __webpack_require__.e(/*! import() | components/repairSign/repairSign */ "components/repairSign/repairSign").then(__webpack_require__.bind(null, /*! @/components/repairSign/repairSign.vue */ 266))
+      return Promise.all(/*! import() | components/repairSign/repairSign */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/repairSign/repairSign")]).then(__webpack_require__.bind(null, /*! @/components/repairSign/repairSign.vue */ 266))
     },
   }
 } catch (e) {

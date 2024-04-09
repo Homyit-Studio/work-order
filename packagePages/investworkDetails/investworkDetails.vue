@@ -119,7 +119,7 @@
 						<view class="img-box">
 							<view v-for="(item,index) in family_image_list" :key="item.name">
 								<image @click="preview(family_image_list,index)"
-									:src="'https://gd.jxiot.top/static/download/' + item.name"
+									:src="`${BASE_URL}/static/download/` + item.name"
 									style="width: 180rpx;height: 210rpx;" mode="aspectFill"></image>
 							</view>
 						</view>
@@ -133,7 +133,7 @@
 					<view class="img-box">
 						<view v-for="(item,index) in inv_image_list" :key="item.name">
 							<image @click="preview(inv_image_list,index)"
-								:src="'https://gd.jxiot.top/static/download/' + item.name"
+								:src="`${BASE_URL}/static/download/` + item.name"
 								style="width: 180rpx;height: 210rpx;" mode="aspectFill"></image>
 						</view>
 					</view>
@@ -146,7 +146,7 @@
 					<view class="img-box">
 						<view v-for="(item, index) in sign_image_list" :key="item.name" style="height: 210rpx;">
 							<image @click="preview(sign_image_list, index)"
-								:src="'https://gd.jxiot.top/static/download/' + item.name"
+								:src="`${BASE_URL}/static/download/` + item.name"
 								style="width: 210rpx;height: 310rpx;transform: rotate(270deg);margin-top: -60rpx;"
 								mode="aspectFill"></image>
 						</view>
@@ -163,7 +163,7 @@
 					<view class="img-box">
 						<view v-for="item in app_image_list" :key="item.name" style="height: 210rpx;">
 							<image @click="preview(item.name)"
-								:src="'https://gd.jxiot.top/static/download/' + item.name"
+								:src="'${BASE_URL}/static/download/' + item.name"
 								style="width: 210rpx;height: 310rpx;transform: rotate(270deg);margin-top: -60rpx;"
 								mode="aspectFill"></image>
 						</view>
@@ -194,7 +194,7 @@
 				<view class="img-box">
 					<view v-for="(item,index) in rep_image_list" :key="item.name">
 						<image @click="preview(rep_image_list, index)"
-							:src="'https://gd.jxiot.top/static/download/' + item.name"
+							:src="`${BASE_URL}/static/download/` + item.name"
 							style="width: 180rpx;height: 210rpx;" mode="aspectFill"></image>
 					</view>
 				</view>
@@ -207,7 +207,7 @@
 				<view class="img-box">
 					<view v-for="(item, index) in rep_sign_images" :key="item.name" style="height: 210rpx;">
 						<image @click="preview(rep_sign_images, index)"
-							:src="'https://gd.jxiot.top/static/download/' + item.name"
+							:src="`${BASE_URL}/static/download/` + item.name"
 							style="width: 210rpx;height: 310rpx;transform: rotate(270deg);margin-top: -60rpx;"
 							mode="aspectFill"></image>
 					</view>
@@ -295,6 +295,8 @@
 </template>
 
 <script>
+import { BASE_URL } from '../../main'
+
 	export default {
 		data() {
 			return {
@@ -335,7 +337,7 @@
 			// 查看套餐详情
 			viewurl() {
 				uni.downloadFile({
-					url: 'https://gd.jxiot.top/static/excel/device-detail.xlsx', // 文件下载路径
+					url: `${BASE_URL}/static/excel/device-detail.xlsx`, // 文件下载路径
 					success: (res) => {
 						if (res.statusCode === 200) {
 							//保存成功并打开文件
@@ -760,7 +762,7 @@
 			preview(imagelist, index) {
 				let array = [];
 				imagelist.forEach((item) => {
-					let url = 'https://gd.jxiot.top/static/download/' + item.name
+					let url = `${BASE_URL}/static/download/` + item.name
 					array.push(url);
 				})
 				uni.previewImage({

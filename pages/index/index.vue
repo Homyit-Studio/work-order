@@ -35,24 +35,25 @@
 </template>
 
 <script>
+import { BASE_URL } from "../../main"
+
 export default {
-	data(){
-		return {
-			images:{}
-		}
-	},
+    data() {
+        return {
+            images: {},
+        }
+    },
     onLoad() {
         uni.$http.get("/get/info").then(({ data }) => {
             const { front_image, heal_status, id_type } = data.data
             const images = this.handleFrontImage(front_image)
-			this.images = images
+            this.images = images
             uni.setStorageSync("images", images)
             uni.setStorageSync("healStatus", heal_status)
             uni.setStorageSync("idType", id_type)
         })
     },
-	mounted(){
-	},
+    mounted() {},
     methods: {
         navigatorTo(card) {
             uni.navigateTo({
@@ -60,7 +61,7 @@ export default {
             })
         },
         handleFrontImage(images) {
-			const prefixUrl = 'https://test.jxiot.top/media/'
+            const prefixUrl = `${BASE_URL}/media/`
             const map = {}
             images.forEach((image) => {
                 map[image.type] = prefixUrl + image.file

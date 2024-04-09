@@ -11,6 +11,10 @@
 /* WEBPACK VAR INJECTION */(function(wx, createApp, uni) {
 
 var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.BASE_URL = void 0;
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
 __webpack_require__(/*! uni-pages */ 26);
 var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ 27));
@@ -22,7 +26,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 // @ts-ignore
 wx.__webpack_require_UNI_MP_PLUGIN__ = __webpack_require__;
 _vue.default.config.productionTip = false;
-_App.default.mpType = 'app';
+_App.default.mpType = "app";
 var app = new _vue.default(_objectSpread({}, _App.default));
 createApp(app).$mount();
 
@@ -31,11 +35,12 @@ createApp(app).$mount();
 
 uni.$http = _requestMiniprogram.$http;
 // const BASE_URL = 'https://gd.jxiot.top'
-var BASE_URL = 'https://test.jxiot.top/';
+var BASE_URL = "https://test.jxiot.top";
+exports.BASE_URL = BASE_URL;
 _requestMiniprogram.$http.baseUrl = BASE_URL;
 _requestMiniprogram.$http.beforeRequest = function (options) {
   if (options.url !== "".concat(BASE_URL, "login/")) {
-    options.header["x-token"] = uni.getStorageSync('x-token');
+    options.header["x-token"] = uni.getStorageSync("x-token");
   }
 };
 
