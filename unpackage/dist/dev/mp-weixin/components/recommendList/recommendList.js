@@ -713,7 +713,7 @@ var _default = {
       var _this$delitem = this.delitem,
         record_id = _this$delitem.record_id,
         device_id = _this$delitem.device_id;
-      uni.$http.post('modify/number/', {
+      uni.$http.post('/modify/number/', {
         number: inputValue,
         record_id: record_id,
         device_id: device_id

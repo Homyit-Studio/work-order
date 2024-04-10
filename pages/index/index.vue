@@ -114,8 +114,8 @@ export default {
             justify-content: flex-start;
             align-items: center;
             box-sizing: border-box;
-            margin: 10rpx;
             text-align: center;
+			margin: 5rpx;
             font-size: 30rpx;
             color: white;
             font-weight: 600;

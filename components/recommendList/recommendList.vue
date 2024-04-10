@@ -457,7 +457,7 @@ import { BASE_URL } from '../../main'
 			},
 			handleModifyCondfirm(inputValue){
 				const {record_id,device_id} = this.delitem
-				uni.$http.post('modify/number/',{
+				uni.$http.post('/modify/number/',{
 					number:inputValue,
 					record_id,
 					device_id,
