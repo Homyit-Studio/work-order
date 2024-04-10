@@ -204,6 +204,7 @@ var _default = {
     };
   },
   onLoad: function onLoad(options) {
+    console.log(options);
     this.status = options.status;
     this.type = options.type;
     this.record_id = options.recordid;

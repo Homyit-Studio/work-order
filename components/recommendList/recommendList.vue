@@ -157,6 +157,12 @@ import { BASE_URL } from '../../main'
 				this.getWorkdetail()
 			}
 		},
+		computed:{
+			// 存储已选择的id号
+			ListId(){
+				return this.finishReList.map((_item)=>_item.device_id)
+			}
+		},
 		methods: {
 			// 查看套餐详情
 			viewurl() {
@@ -344,8 +350,6 @@ import { BASE_URL } from '../../main'
 				})
 			},
 			onnodeclick(e) {
-				console.log(this.deviceTree)
-				console.log(e)
 				if (e.cost == undefined) {
 					this.recomDetail = ""
 					this.recomUnit = ""
@@ -375,6 +379,14 @@ import { BASE_URL } from '../../main'
 					uni.showToast({
 						icon: "error",
 						title: "数量不能为0"
+					})
+					return
+				}
+				if(this.ListId.includes(obj.device_id)){
+					uni.showToast({
+						title: "不能重复添加",
+						icon:'fail',
+						mask:true
 					})
 					return
 				}
@@ -422,7 +434,7 @@ import { BASE_URL } from '../../main'
 						})
 					} else if (res.data.code == 0) {
 						uni.showToast({
-							title: "清单上传成功"
+							title: res.data.notice || 'success'
 						})
 						setTimeout(() => {
 							this.$emit("finishStepfour")

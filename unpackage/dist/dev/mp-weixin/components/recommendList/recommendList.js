@@ -384,6 +384,14 @@ var _default = {
       this.getWorkdetail();
     }
   },
+  computed: {
+    // 存储已选择的id号
+    ListId: function ListId() {
+      return this.finishReList.map(function (_item) {
+        return _item.device_id;
+      });
+    }
+  },
   methods: {
     // 查看套餐详情
     viewurl: function viewurl() {
@@ -574,8 +582,6 @@ var _default = {
       });
     },
     onnodeclick: function onnodeclick(e) {
-      console.log(this.deviceTree);
-      console.log(e);
       if (e.cost == undefined) {
         this.recomDetail = "";
         this.recomUnit = "";
@@ -605,6 +611,14 @@ var _default = {
         uni.showToast({
           icon: "error",
           title: "数量不能为0"
+        });
+        return;
+      }
+      if (this.ListId.includes(obj.device_id)) {
+        uni.showToast({
+          title: "不能重复添加",
+          icon: 'fail',
+          mask: true
         });
         return;
       }
@@ -675,7 +689,7 @@ var _default = {
           });
         } else if (res.data.code == 0) {
           uni.showToast({
-            title: "清单上传成功"
+            title: res.data.notice || 'success'
           });
           setTimeout(function () {
             _this5.$emit("finishStepfour");
