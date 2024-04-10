@@ -105,11 +105,13 @@
 					 mode="input" placeholder="请输入修改的数量"  @confirm="handleModifyCondfirm"></uni-popup-dialog>
 			</uni-popup>
 		</view>
+		<CustomPopup ref="customMyPop" :text="popupText"></CustomPopup>
 	</view>
 </template>
 
 <script>
 import { BASE_URL } from '../../main'
+import CustomPopup from '../CustomPopup.vue'
 	export default {
 		name: "recommendList",
 		props: {
@@ -144,13 +146,17 @@ import { BASE_URL } from '../../main'
 				saveDevice: [],
 				delitem: {},
 				recomUnit: "",
-				isShowDialog:false // 对dialog进行销毁，以便重置数据
+				isShowDialog:false, // 对dialog进行销毁，以便重置数据
+				popupText:'', 
 			}
 		},
 		//asnyc原理还需要理解透彻
 		//为了解决时间上的错误，运用两个生命周期
 		created() {
 			this.initDevice()
+		},
+		components:{
+			CustomPopup	
 		},
 		mounted() {
 			if (this.newwork == 2) {
@@ -414,9 +420,9 @@ import { BASE_URL } from '../../main'
 			},
 			deviceCreate() {
 				const that = this
-				uni.showLoading({
-					title: "正在添加中"
-				})
+				// uni.showLoading({
+				// 	title: "正在添加中"
+				// })
 				if (this.finishReList.length == 0) {
 					this.finishReList.push({
 						record_id: this.recordid
@@ -433,12 +439,15 @@ import { BASE_URL } from '../../main'
 							icon: "error"
 						})
 					} else if (res.data.code == 0) {
-						uni.showToast({
-							title: res.data.notice || 'success'
-						})
+						// uni.showToast({
+						// 	title: res.data.notice || 'success'
+						// })
+						this.popupText = res.data.notice
+						this.$refs.customMyPop.show()
 						setTimeout(() => {
+							this.$refs.customMyPop.close()
 							this.$emit("finishStepfour")
-						}, 100)
+						}, 500)
 					} else {
 						uni.showToast({
 							title: "未知错误",
@@ -456,9 +465,9 @@ import { BASE_URL } from '../../main'
 				this.$refs.finishDialog.open()
 			},
 			finishConfirm() {
-				uni.showToast({
-					title: `提交成功`
-				})
+				// uni.showToast({
+				// 	title: `提交成功`
+				// })
 				this.recommendConfirm()
 			},
 			modifyDevice(item, index) {

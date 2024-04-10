@@ -337,6 +337,12 @@ var _main = __webpack_require__(/*! ../../main */ 0);
 //
 //
 //
+//
+var CustomPopup = function CustomPopup() {
+  __webpack_require__.e(/*! require.ensure | components/CustomPopup */ "components/CustomPopup").then((function () {
+    return resolve(__webpack_require__(/*! ../CustomPopup.vue */ 388));
+  }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
+};
 var _default = {
   name: "recommendList",
   props: {
@@ -371,13 +377,18 @@ var _default = {
       saveDevice: [],
       delitem: {},
       recomUnit: "",
-      isShowDialog: false // 对dialog进行销毁，以便重置数据
+      isShowDialog: false,
+      // 对dialog进行销毁，以便重置数据
+      popupText: ''
     };
   },
   //asnyc原理还需要理解透彻
   //为了解决时间上的错误，运用两个生命周期
   created: function created() {
     this.initDevice();
+  },
+  components: {
+    CustomPopup: CustomPopup
   },
   mounted: function mounted() {
     if (this.newwork == 2) {
@@ -669,9 +680,9 @@ var _default = {
     deviceCreate: function deviceCreate() {
       var _this5 = this;
       var that = this;
-      uni.showLoading({
-        title: "正在添加中"
-      });
+      // uni.showLoading({
+      // 	title: "正在添加中"
+      // })
       if (this.finishReList.length == 0) {
         this.finishReList.push({
           record_id: this.recordid
@@ -688,12 +699,15 @@ var _default = {
             icon: "error"
           });
         } else if (res.data.code == 0) {
-          uni.showToast({
-            title: res.data.notice || 'success'
-          });
+          // uni.showToast({
+          // 	title: res.data.notice || 'success'
+          // })
+          _this5.popupText = res.data.notice;
+          _this5.$refs.customMyPop.show();
           setTimeout(function () {
+            _this5.$refs.customMyPop.close();
             _this5.$emit("finishStepfour");
-          }, 100);
+          }, 500);
         } else {
           uni.showToast({
             title: "未知错误",
@@ -711,9 +725,9 @@ var _default = {
       this.$refs.finishDialog.open();
     },
     finishConfirm: function finishConfirm() {
-      uni.showToast({
-        title: "\u63D0\u4EA4\u6210\u529F"
-      });
+      // uni.showToast({
+      // 	title: `提交成功`
+      // })
       this.recommendConfirm();
     },
     modifyDevice: function modifyDevice(item, index) {
