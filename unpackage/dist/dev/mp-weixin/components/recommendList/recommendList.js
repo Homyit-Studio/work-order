@@ -378,7 +378,8 @@ var _default = {
       recomUnit: "",
       isShowDialog: false,
       // 对dialog进行销毁，以便重置数据
-      popupText: ''
+      popupText: '',
+      exitDeviceId: [] // 已存在的
     };
   },
   //asnyc原理还需要理解透彻
@@ -502,7 +503,6 @@ var _default = {
           var _res$data$data = res.data.data,
             device_list = _res$data$data.device_list,
             all_cost = _res$data$data.all_cost;
-          console.log(device_list);
           if (all_cost != null) {
             _this2.allcost = all_cost;
           }
@@ -514,9 +514,9 @@ var _default = {
             obj.cost = item.cost;
             // that.allcost += that.costMap[item.name]*obj.number
             _this2.finishReList.push(obj);
+            _this2.exitDeviceId.push(obj.device_id);
           });
           _this2.saveDevice = device_list;
-          // this.deleteDeviceAll(device_list)
         } else {
           uni.showToast({
             icon: 'error',
@@ -723,10 +723,17 @@ var _default = {
       this.recommendConfirm();
     },
     modifyDevice: function modifyDevice(item, index) {
-      this.isShowDialog = true;
-      this.delitem = item;
-      this.delindex = index;
-      this.$refs.modifyPopup.open();
+      if (this.exitDeviceId.includes(item.device_id)) {
+        this.isShowDialog = true;
+        this.delitem = item;
+        this.delindex = index;
+        this.$refs.modifyPopup.open();
+        return;
+      }
+      uni.showToast({
+        title: '不能够修改新添加的设备',
+        icon: 'none'
+      });
     },
     finishConfirmNotice: function finishConfirmNotice() {
       this.$emit("finishStepfour");
