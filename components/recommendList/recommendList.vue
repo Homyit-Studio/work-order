@@ -18,7 +18,7 @@
 				<text>单价:{{recomDetail}}</text>
 			</view>
 			<view class="number-box">
-				<uni-number-box :step="0.1" v-model="deviceChoose.number" padding />
+				<uni-number-box :step="0.01" v-model="deviceChoose.number" padding />
 				<text> {{recomUnit}}</text>
 			</view>
 			<view class="notes">
