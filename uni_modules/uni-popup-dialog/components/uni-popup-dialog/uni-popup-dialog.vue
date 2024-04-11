@@ -14,7 +14,7 @@
 			</slot>
 		</view>
 		<view class="uni-dialog-button-group">
-			<view class="uni-dialog-button" @click="closeDialog">
+			<view class="uni-dialog-button" @click="closeDialog" v-if="showClose">
 				<text class="uni-dialog-button-text">{{closeText}}</text>
 			</view>
 			<view class="uni-dialog-button uni-border-left" @click="onOk">
@@ -92,6 +92,10 @@
 			confirmText:{
 				type: String,
 				default: ''
+			},
+			showClose:{
+				type:Boolean,
+				default:true
 			}
 		},
 		data() {

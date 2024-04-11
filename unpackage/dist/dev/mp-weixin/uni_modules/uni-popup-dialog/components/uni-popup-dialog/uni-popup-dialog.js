@@ -213,6 +213,10 @@ var _default = {
     confirmText: {
       type: String,
       default: ''
+    },
+    showClose: {
+      type: Boolean,
+      default: true
     }
   },
   data: function data() {

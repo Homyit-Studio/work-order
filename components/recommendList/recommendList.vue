@@ -105,13 +105,16 @@
 					 mode="input" placeholder="请输入修改的数量"  @confirm="handleModifyCondfirm"></uni-popup-dialog>
 			</uni-popup>
 		</view>
-		<CustomPopup ref="customMyPop" :text="popupText"></CustomPopup>
+		
+		<uni-popup ref="noticeFinishInfoPop">
+			<uni-popup-dialog type="info" :showClose="false"  confirmText="我知道了" title="通知" :content="popupText"
+				@confirm="finishConfirmNotice"></uni-popup-dialog>
+		</uni-popup>
 	</view>
 </template>
 
 <script>
 import { BASE_URL } from '../../main'
-import CustomPopup from '../CustomPopup.vue'
 	export default {
 		name: "recommendList",
 		props: {
@@ -154,9 +157,6 @@ import CustomPopup from '../CustomPopup.vue'
 		//为了解决时间上的错误，运用两个生命周期
 		created() {
 			this.initDevice()
-		},
-		components:{
-			CustomPopup	
 		},
 		mounted() {
 			if (this.newwork == 2) {
@@ -443,11 +443,8 @@ import CustomPopup from '../CustomPopup.vue'
 						// 	title: res.data.notice || 'success'
 						// })
 						this.popupText = res.data.notice
-						this.$refs.customMyPop.show()
-						setTimeout(() => {
-							this.$refs.customMyPop.close()
-							this.$emit("finishStepfour")
-						}, 500)
+						this.$refs.noticeFinishInfoPop.open()
+					
 					} else {
 						uni.showToast({
 							title: "未知错误",
@@ -475,6 +472,9 @@ import CustomPopup from '../CustomPopup.vue'
 				this.delitem = item
 				this.delindex = index
 				this.$refs.modifyPopup.open()
+			},
+			finishConfirmNotice(){
+				this.$emit("finishStepfour")
 			},
 			handleModifyCondfirm(inputValue){
 				const {record_id,device_id} = this.delitem

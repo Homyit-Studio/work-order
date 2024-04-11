@@ -338,11 +338,10 @@ var _main = __webpack_require__(/*! ../../main */ 0);
 //
 //
 //
-var CustomPopup = function CustomPopup() {
-  __webpack_require__.e(/*! require.ensure | components/CustomPopup */ "components/CustomPopup").then((function () {
-    return resolve(__webpack_require__(/*! ../CustomPopup.vue */ 388));
-  }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
-};
+//
+//
+//
+//
 var _default = {
   name: "recommendList",
   props: {
@@ -386,9 +385,6 @@ var _default = {
   //为了解决时间上的错误，运用两个生命周期
   created: function created() {
     this.initDevice();
-  },
-  components: {
-    CustomPopup: CustomPopup
   },
   mounted: function mounted() {
     if (this.newwork == 2) {
@@ -703,11 +699,7 @@ var _default = {
           // 	title: res.data.notice || 'success'
           // })
           _this5.popupText = res.data.notice;
-          _this5.$refs.customMyPop.show();
-          setTimeout(function () {
-            _this5.$refs.customMyPop.close();
-            _this5.$emit("finishStepfour");
-          }, 500);
+          _this5.$refs.noticeFinishInfoPop.open();
         } else {
           uni.showToast({
             title: "未知错误",
@@ -735,6 +727,9 @@ var _default = {
       this.delitem = item;
       this.delindex = index;
       this.$refs.modifyPopup.open();
+    },
+    finishConfirmNotice: function finishConfirmNotice() {
+      this.$emit("finishStepfour");
     },
     handleModifyCondfirm: function handleModifyCondfirm(inputValue) {
       var _this6 = this;

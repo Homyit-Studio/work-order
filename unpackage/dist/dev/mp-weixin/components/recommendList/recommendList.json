@@ -7,8 +7,7 @@
     "uni-easyinput": "/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput",
     "uni-popup": "/uni_modules/uni-popup/components/uni-popup/uni-popup",
     "uni-popup-dialog": "/uni_modules/uni-popup-dialog/components/uni-popup-dialog/uni-popup-dialog",
-    "uni-popup-message": "/uni_modules/uni-popup-message/components/uni-popup-message/uni-popup-message",
-    "custom-popup": "/components/CustomPopup"
+    "uni-popup-message": "/uni_modules/uni-popup-message/components/uni-popup-message/uni-popup-message"
   },
   "component": true
 }
